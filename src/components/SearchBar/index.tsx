@@ -68,7 +68,7 @@ export default function SearchBar({ isMobile = false, onItemClick }: SearchBarPr
             <div
               key={item._id}
               onClick={() => {
-                router.push(`/bai-viet/${item.slug}`);
+                router.push(`/${item.slug}`);
                 setSearchOpen(false);
                 setSearchValue("");
                 onItemClick?.();

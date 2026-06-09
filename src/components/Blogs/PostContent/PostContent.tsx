@@ -47,12 +47,12 @@ const PostContent: FC<PostContentProps> = ({ title, author, authorUrl, createdAt
             <li>
               <span className="font-medium">Website:</span>{" "}
               <a
-                href="https://hotrodatxesieure.com"
+                href="https://datxemaytaxidian.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline hover:text-blue-800"
               >
-                hotrodatxesieure.com
+                datxemaytaxidian.com
               </a>
             </li>
             <li>

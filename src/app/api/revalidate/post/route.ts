@@ -16,6 +16,6 @@ export async function GET(req: Request) {
   }
 
   // Revalidate đường dẫn bài viết
-  revalidatePath(`/bai-viet/${slug}`);
+  revalidatePath(`/${slug}`);
   return Response.json({ revalidated: true, now: Date.now() });
 }

@@ -7,11 +7,7 @@ type Post = {
   slug: string;
   title: string;
 };
-export default async function NewPostFooter({
-  currentSlug,
-}: {
-  currentSlug?: string;
-}) {
+export default async function NewPostFooter({ currentSlug }: { currentSlug?: string }) {
   const res = await getAllPosts(5);
   // Add debug logging
   if (!res.success) {
@@ -43,7 +39,7 @@ export default async function NewPostFooter({
               whiteSpace: "nowrap",
               textOverflow: "ellipsis",
             }}
-            href={`/bai-viet/${post.slug}`}
+            href={`/${post.slug}`}
             color="inherit"
             display="block"
             underline="hover"

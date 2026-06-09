@@ -31,7 +31,7 @@ function buildStaticUrls() {
         `<url>
       <loc>${SITE_URL}${path}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
-    </url>`
+    </url>`,
     )
     .join("");
 }
@@ -46,7 +46,7 @@ export async function GET(): Promise<NextResponse> {
 
     dynamicXml = posts
       .map((post) => {
-        const loc = `${SITE_URL}/bai-viet/${post.slug}`;
+        const loc = `${SITE_URL}/${post.slug}`;
         // Dùng modifiedDate nếu có, nếu không fallback sang publishedDate
         const date = post.modifiedDate || post.publishedDate || new Date();
         const lastmod = new Date(date).toISOString();

@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   const getFullImageUrl = (url?: string) =>
     url?.startsWith("http") ? url : `${process.env.NEXT_PUBLIC_API_URL}/${url ?? "default-blogs.png"}`;
   const imglink = getFullImageUrl(post.image?.url);
-  const canonicalUrl = `${url}/bai-viet/${slug}`;
+  const canonicalUrl = `${url}/${slug}`;
   const headings = helperArrayHeading(post.content);
   const articleSection = headings.length > 0 ? headings : siteConfig.keywords.split(",");
   return {
@@ -158,7 +158,7 @@ const PostPage: FC<PostPageProps> = async ({ params }) => {
     dateModified: post.modifiedDate ? post.modifiedDate || post.publishedDate : "",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${siteConfig.domain}/bai-viet/${slug}`,
+      "@id": `${siteConfig.domain}/${slug}`,
     },
     articleSection: headings.length > 0 ? headings : siteConfig.keywords.split(","),
     keywords: post?.tags ? post?.tags.join(", ") : siteConfig.keywords.split(","),

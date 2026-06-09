@@ -18,10 +18,7 @@ import { siteConfig } from "@/config/default.config";
 import Footer from "@/components/Footer";
 import BreadcrumbsComponent from "@/components/Blogs/Breadcrumbs";
 import { Header } from "@/components/Header";
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  props,
-  ref
-) {
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
@@ -33,10 +30,7 @@ const BlogListContent: React.FC = () => {
   const [page, setPage] = useState(parseInt(searchParams.get("page") || "1"));
   const [totalPages, setTotalPages] = useState(1);
   // Handler for closing snackbar
-  const handleCloseSnackbar = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
+  const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === "clickaway") {
       return;
     }
@@ -92,8 +86,7 @@ const BlogListContent: React.FC = () => {
           slug={`bai-viet?page=${page}`}
           isIndex={true}
           description={
-            "taxi giá rẻ liên tỉnh đặt taxi đưa đón tận nơi đặt taxi 4 chỗ 7 chỗ Gọi 0898335292" +
-            siteConfig.name
+            "taxi giá rẻ liên tỉnh đặt taxi đưa đón tận nơi đặt taxi 4 chỗ 7 chỗ Gọi 0898335292" + siteConfig.name
           }
         />
         <div>
@@ -106,9 +99,7 @@ const BlogListContent: React.FC = () => {
               />
             </div>
             <h2 className="text-2xl font-bold mb-6">Danh sách bài viết </h2>
-            <div className="text-center text-gray-500">
-              Không có bài viết nào.
-            </div>
+            <div className="text-center text-gray-500">Không có bài viết nào.</div>
           </div>
           <Footer />
         </div>
@@ -123,8 +114,7 @@ const BlogListContent: React.FC = () => {
         slug={`bai-viet?page=${page}`}
         isIndex={true}
         description={
-          "taxi giá rẻ liên tỉnh đặt taxi đưa đón tận nơi đặt taxi 4 chỗ 7 chỗ Gọi 0898335292" +
-          siteConfig.name
+          "taxi giá rẻ liên tỉnh đặt taxi đưa đón tận nơi đặt taxi 4 chỗ 7 chỗ Gọi 0898335292" + siteConfig.name
         }
       />
       <div>
@@ -145,11 +135,7 @@ const BlogListContent: React.FC = () => {
               >
                 <div className="relative w-full h-48 sm:h-56 md:h-60">
                   <Image
-                    src={
-                      blog?.image?.url
-                        ? `${blog.image.url}`
-                        : "/defaul-blog.jpg"
-                    }
+                    src={blog?.image?.url ? `${blog.image.url}` : "/defaul-blog.jpg"}
                     alt={blog.title ?? "Grab Đặt Xe Liên Tỉnh"}
                     fill
                     className="object-cover"
@@ -158,12 +144,10 @@ const BlogListContent: React.FC = () => {
                 <div className="p-4 flex flex-col flex-grow">
                   <h3 className="text-lg font-semibold mb-2">{blog.title}</h3>
                   <p className="text-sm text-gray-600 flex-grow">
-                    {blog.description.length > 100
-                      ? blog.description.substring(0, 100) + "..."
-                      : blog.description}
+                    {blog.description.length > 100 ? blog.description.substring(0, 100) + "..." : blog.description}
                   </p>
                   <div className="mt-4 text-right">
-                    <Link href={`/bai-viet/${blog.slug}`}>
+                    <Link href={`/${blog.slug}`}>
                       <span className="inline-block bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded hover:bg-blue-700 transition">
                         Đọc tiếp
                       </span>
@@ -177,12 +161,7 @@ const BlogListContent: React.FC = () => {
           {/* Pagination */}
           <div className="flex justify-center mt-8">
             <div className="inline-flex items-center space-x-2">
-              <Pagination
-                count={totalPages}
-                page={page}
-                onChange={handlePageChange}
-                color="primary"
-              />
+              <Pagination count={totalPages} page={page} onChange={handlePageChange} color="primary" />
             </div>
           </div>
 
@@ -193,11 +172,7 @@ const BlogListContent: React.FC = () => {
             onClose={handleCloseSnackbar}
             anchorOrigin={{ vertical: "top", horizontal: "center" }}
           >
-            <Alert
-              onClose={handleCloseSnackbar}
-              severity={snackbar.severity}
-              sx={{ width: "100%" }}
-            >
+            <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: "100%" }}>
               {snackbar.message}
             </Alert>
           </Snackbar>

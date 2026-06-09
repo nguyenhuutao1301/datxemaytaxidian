@@ -9,7 +9,7 @@ interface ApiResponse {
 }
 async function getUser(id: string) {
   try {
-    const { data } = await axios.get<ApiResponse>(`https://datxecongnghe.io.vn/api/user?id=${id}`, {
+    const { data } = await axios.get<ApiResponse>(`https://api.taxinhanh247.pro.vn/api/user?id=${id}`, {
       headers: {
         "Cache-Control": "no-store",
         "Content-Type": "application/json",
