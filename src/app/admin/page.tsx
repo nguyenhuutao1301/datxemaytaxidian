@@ -1,32 +1,12 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import { useEffect, useState } from "react";
-import {
-  Card,
-  Grid,
-  Typography,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@mui/material";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import { Card, Grid, Typography, Table, TableBody, TableCell, TableHead, TableRow, Paper } from "@mui/material";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import axiosInstance from "@/untils/axios";
 import Loading from "@/components/Loading";
-import {
-  AdminData,
-  recentOrdersProps,
-  recentPostsProps,
-} from "@/types/admin.type";
+import { AdminData, recentOrdersProps, recentPostsProps } from "@/types/admin.type";
 import ClientMeta from "@/components/Client/ClientMetadata/ClientMetadata";
 import fomatVnd from "@/helpers/fomatVnd.helpper";
 export default function Dashboard() {
@@ -83,9 +63,7 @@ export default function Dashboard() {
           <Grid item xs={12} sm={6} md={2.4}>
             <Card sx={{ p: 2 }}>
               <Typography variant="subtitle2">Chi Tiêu AI</Typography>
-              <Typography variant="h4">
-                {fomatVnd(data.overview.totalRevenue)}Đ
-              </Typography>
+              <Typography variant="h4">{fomatVnd(data.overview.totalRevenue)}Đ</Typography>
             </Card>
           </Grid>
         </Grid>
@@ -126,9 +104,7 @@ export default function Dashboard() {
                   <TableCell>{order.addressFrom}</TableCell>
                   <TableCell>{order.phoneNumber}</TableCell>
                   <TableCell>{order.serviceType}</TableCell>
-                  <TableCell>
-                    {new Date(order.createdAt).toLocaleDateString()}
-                  </TableCell>
+                  <TableCell>{new Date(order.createdAt).toLocaleDateString()}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -151,9 +127,7 @@ export default function Dashboard() {
               {data.recentPosts.map((post: recentPostsProps) => (
                 <TableRow key={post._id}>
                   <TableCell>{post.title}</TableCell>
-                  <TableCell>
-                    {new Date(post.createdAt).toLocaleDateString()}
-                  </TableCell>
+                  <TableCell>{new Date(post.createdAt).toLocaleDateString()}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

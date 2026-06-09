@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import React, { useState, ChangeEvent } from "react";
 import { Avatar, Box, Button, Container } from "@mui/material";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
@@ -9,10 +11,7 @@ import { useUser } from "@/context/UserContext";
 import createImage from "@/api/image/createImage";
 import ClientMeta from "@/components/Client/ClientMetadata/ClientMetadata";
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  props,
-  ref
-) {
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
@@ -24,10 +23,7 @@ const ImageUpload: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
   const [show, setShow] = useState<boolean>(false);
   const [preview, setPreview] = useState<string>("");
-  const [uploadMessage, setUploadMessage] = useState<[string, string | null]>([
-    "",
-    null,
-  ]);
+  const [uploadMessage, setUploadMessage] = useState<[string, string | null]>(["", null]);
   // state to manage snackbar
   const [snackbar, setSnackbar] = useState<{
     open: boolean;
@@ -39,10 +35,7 @@ const ImageUpload: React.FC = () => {
     severity: "success",
   });
   //close snackbar function
-  const handleCloseSnackbar = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ): void => {
+  const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string): void => {
     if (reason === "clickaway") {
       return;
     }
@@ -66,10 +59,7 @@ const ImageUpload: React.FC = () => {
     if (!image) return;
     const response = await createImage(image);
     if (response && response?.success) {
-      setUploadMessage([
-        `Lưu ảnh thành công xem ảnh ngay`,
-        `${response.imageUrl}`,
-      ]);
+      setUploadMessage([`Lưu ảnh thành công xem ảnh ngay`, `${response.imageUrl}`]);
       setSnackbar({
         open: true,
         message: "Lưu ảnh thành công",
@@ -87,18 +77,14 @@ const ImageUpload: React.FC = () => {
   if (!user) {
     return (
       <Container sx={{ mt: 20, mb: 20 }}>
-        <MuiAlert severity="warning">
-          Bạn cần đăng nhập để truy cập nội dung này.
-        </MuiAlert>
+        <MuiAlert severity="warning">Bạn cần đăng nhập để truy cập nội dung này.</MuiAlert>
       </Container>
     );
   }
   if (role !== "admin") {
     return (
       <Container sx={{ mt: 20, mb: 20 }}>
-        <MuiAlert severity="warning">
-          Chỉ Admin Mới Có Quyền Truy Cập Trang Này !
-        </MuiAlert>
+        <MuiAlert severity="warning">Chỉ Admin Mới Có Quyền Truy Cập Trang Này !</MuiAlert>
       </Container>
     );
   }
@@ -127,12 +113,7 @@ const ImageUpload: React.FC = () => {
           {!show && (
             <Button variant="outlined" component="label">
               <DriveFolderUploadIcon /> Chọn ảnh từ thiết bị
-              <input
-                type="file"
-                hidden
-                accept="image/*"
-                onChange={handleImageChange}
-              />
+              <input type="file" hidden accept="image/*" onChange={handleImageChange} />
             </Button>
           )}
           {show && (
@@ -176,11 +157,7 @@ const ImageUpload: React.FC = () => {
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
-        <Alert
-          onClose={handleCloseSnackbar}
-          severity={snackbar.severity}
-          sx={{ width: "100%" }}
-        >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: "100%" }}>
           {snackbar.message}
         </Alert>
       </Snackbar>

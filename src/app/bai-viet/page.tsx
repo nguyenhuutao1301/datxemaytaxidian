@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import React, { useEffect, useState, Suspense } from "react";
 import { Container } from "@mui/material";
 import Link from "next/link";

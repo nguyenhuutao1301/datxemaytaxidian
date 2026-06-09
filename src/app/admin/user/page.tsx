@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import React, { useEffect, useState } from "react";
 import { useUser } from "@/context/UserContext";
@@ -85,39 +86,21 @@ export default function AdminUserPage() {
             <table className="min-w-full border divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                    Tên đăng nhập
-                  </th>
-                  <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                    Email
-                  </th>
-                  <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                    Số điện thoại
-                  </th>
-                  <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                    Vai trò
-                  </th>
-                  <th className="px-4 py-2 text-right text-sm font-semibold text-gray-700">
-                    Hành động
-                  </th>
+                  <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">Tên đăng nhập</th>
+                  <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">Email</th>
+                  <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">Số điện thoại</th>
+                  <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">Vai trò</th>
+                  <th className="px-4 py-2 text-right text-sm font-semibold text-gray-700">Hành động</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {users.length > 0 ? (
                   users.map((u) => (
                     <tr key={u._id} className="hover:bg-gray-50">
-                      <td className="px-4 py-2 text-sm text-gray-800">
-                        {u.username}
-                      </td>
-                      <td className="px-4 py-2 text-sm text-gray-800">
-                        {u.email}
-                      </td>
-                      <td className="px-4 py-2 text-sm text-gray-800">
-                        {u.phone}
-                      </td>
-                      <td className="px-4 py-2 text-sm text-gray-800">
-                        {u.role}
-                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-800">{u.username}</td>
+                      <td className="px-4 py-2 text-sm text-gray-800">{u.email}</td>
+                      <td className="px-4 py-2 text-sm text-gray-800">{u.phone}</td>
+                      <td className="px-4 py-2 text-sm text-gray-800">{u.role}</td>
                       <td className="px-4 py-2 text-right">
                         <button
                           onClick={() => handleDelete(u._id)}
@@ -130,10 +113,7 @@ export default function AdminUserPage() {
                   ))
                 ) : (
                   <tr>
-                    <td
-                      colSpan={5}
-                      className="text-center py-4 text-gray-500 text-sm"
-                    >
+                    <td colSpan={5} className="text-center py-4 text-gray-500 text-sm">
                       Không có người dùng nào.
                     </td>
                   </tr>

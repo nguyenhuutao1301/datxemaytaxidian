@@ -1,18 +1,12 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getTrafficData } from "@/api/admin/traffic";
 import { ForwardIcon } from "@heroicons/react/24/outline";
 import ClientMeta from "@/components/Client/ClientMetadata/ClientMetadata";
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableHeader,
-  TableBody,
-  TableCell,
-} from "@/components/ui/table";
+import { Table, TableHead, TableRow, TableHeader, TableBody, TableCell } from "@/components/ui/table";
 
 import { TrafficItem } from "../../../types/traffic";
 import Link from "next/link";
@@ -57,11 +51,7 @@ export default function AdminTraffic() {
       <div className="max-w-7xl mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4">📊 Thống Kê Traffic</h1>
 
-        <Tabs
-          defaultValue="all"
-          className="mb-4"
-          onValueChange={(v: any) => setFilter(v)}
-        >
+        <Tabs defaultValue="all" className="mb-4" onValueChange={(v: any) => setFilter(v)}>
           <TabsList>
             <TabsTrigger value="all">Tất cả</TabsTrigger>
             <TabsTrigger value="human">Người dùng</TabsTrigger>
@@ -92,12 +82,8 @@ export default function AdminTraffic() {
             <TableBody>
               {filtered.map((item) => (
                 <TableRow key={item._id}>
-                  <TableCell className="truncate max-w-[100px]">
-                    {item.Ip}
-                  </TableCell>
-                  <TableCell className="truncate max-w-[150px]">
-                    {item.ref}
-                  </TableCell>
+                  <TableCell className="truncate max-w-[100px]">{item.Ip}</TableCell>
+                  <TableCell className="truncate max-w-[150px]">{item.ref}</TableCell>
                   <TableCell>{item.isBot ? "🤖 Bot" : "👤 Người"}</TableCell>
                   <TableCell>{item.isAds ? "✅" : "❌"}</TableCell>
                   <TableCell>{item.times ? item.times : 0}</TableCell>

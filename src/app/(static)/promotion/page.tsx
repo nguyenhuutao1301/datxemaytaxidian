@@ -1,5 +1,7 @@
 // app/promotion/page.tsx
 import React from "react";
+export const dynamic = "force-dynamic";
+
 import { Metadata } from "next";
 import Link from "next/link";
 import BreadcrumbsComponent from "@/components/Blogs/Breadcrumbs";
@@ -18,10 +20,7 @@ const PromotionPage = () => {
   return (
     <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6 md:p-10 border border-gray-200">
       <div className="my-6">
-        <BreadcrumbsComponent
-          breadcrumbs={[{ name: "Trang Chủ", url: "/" }]}
-          currentTitle="Khuyến Mãi Đặt Xe"
-        />
+        <BreadcrumbsComponent breadcrumbs={[{ name: "Trang Chủ", url: "/" }]} currentTitle="Khuyến Mãi Đặt Xe" />
       </div>
       <h1 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-6">
         🎉 Ưu Đãi Đặc Biệt Khi Đặt Xe Liên Tỉnh!
@@ -29,33 +28,26 @@ const PromotionPage = () => {
 
       <div className="space-y-6">
         <section className="bg-blue-50 p-4 md:p-6 rounded-xl shadow-sm">
-          <h2 className="text-2xl font-semibold text-blue-700 mb-2">
-            🚖 Giảm 10% cho chuyến đi liên tỉnh
-          </h2>
+          <h2 className="text-2xl font-semibold text-blue-700 mb-2">🚖 Giảm 10% cho chuyến đi liên tỉnh</h2>
           <p className="text-gray-700">
-            Áp dụng cho mọi khách hàng đặt chuyến xe <strong>liên tỉnh</strong>{" "}
-            bằng <span className="font-medium">taxi 4 chỗ hoặc 7 chỗ</span>. Giá
-            được giảm trực tiếp khi bạn đặt trước.
+            Áp dụng cho mọi khách hàng đặt chuyến xe <strong>liên tỉnh</strong> bằng{" "}
+            <span className="font-medium">taxi 4 chỗ hoặc 7 chỗ</span>. Giá được giảm trực tiếp khi bạn đặt trước.
           </p>
         </section>
 
         <section className="bg-green-50 p-4 md:p-6 rounded-xl shadow-sm">
-          <h2 className="text-2xl font-semibold text-green-700 mb-2">
-            🔄 Giảm 15% cho chuyến xe 2 chiều trong ngày
-          </h2>
+          <h2 className="text-2xl font-semibold text-green-700 mb-2">🔄 Giảm 15% cho chuyến xe 2 chiều trong ngày</h2>
           <p className="text-gray-700">
-            Đặt xe 2 chiều trong ngày cho tuyến <strong>liên tỉnh</strong> sẽ
-            nhận ngay ưu đãi 15%. Chuyến đi tiết kiệm hơn, thuận tiện hơn.
+            Đặt xe 2 chiều trong ngày cho tuyến <strong>liên tỉnh</strong> sẽ nhận ngay ưu đãi 15%. Chuyến đi tiết kiệm
+            hơn, thuận tiện hơn.
           </p>
         </section>
 
         <section className="bg-yellow-50 p-4 md:p-6 rounded-xl shadow-sm">
-          <h2 className="text-xl font-semibold text-yellow-700 mb-2">
-            📅 Thời gian áp dụng
-          </h2>
+          <h2 className="text-xl font-semibold text-yellow-700 mb-2">📅 Thời gian áp dụng</h2>
           <p className="text-gray-700">
-            Từ <strong>19/07/2025</strong> đến khi có thông báo mới. Ưu đãi có
-            thể kết thúc sớm nên hãy đặt ngay hôm nay!
+            Từ <strong>19/07/2025</strong> đến khi có thông báo mới. Ưu đãi có thể kết thúc sớm nên hãy đặt ngay hôm
+            nay!
           </p>
         </section>
 

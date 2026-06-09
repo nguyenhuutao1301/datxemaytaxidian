@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import { useState } from "react";
 import axiosInstance from "@/untils/axios";
@@ -21,11 +22,7 @@ export default function FindAndReplace() {
   const [error, setError] = useState("");
 
   const handleFieldToggle = (fieldId: string) => {
-    setSelectedFields((prev) =>
-      prev.includes(fieldId)
-        ? prev.filter((f) => f !== fieldId)
-        : [...prev, fieldId]
-    );
+    setSelectedFields((prev) => (prev.includes(fieldId) ? prev.filter((f) => f !== fieldId) : [...prev, fieldId]));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,14 +32,11 @@ export default function FindAndReplace() {
     setResult(null);
 
     try {
-      const response = await axiosInstance.put(
-        "/api/posts/put/find-and-replace",
-        {
-          find,
-          replace,
-          fields: selectedFields,
-        }
-      );
+      const response = await axiosInstance.put("/api/posts/put/find-and-replace", {
+        find,
+        replace,
+        fields: selectedFields,
+      });
 
       setResult(response.data);
       setPreview(response.data.preview || []);
@@ -74,9 +68,7 @@ export default function FindAndReplace() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
-                Thay thế bằng
-              </label>
+              <label className="block text-sm font-medium mb-1">Thay thế bằng</label>
               <input
                 type="text"
                 value={replace}
@@ -89,9 +81,7 @@ export default function FindAndReplace() {
 
           {/* Field checkboxes */}
           <div>
-            <label className="block text-sm font-medium mb-2">
-              Chọn trường cần thay thế
-            </label>
+            <label className="block text-sm font-medium mb-2">Chọn trường cần thay thế</label>
             <div className="grid grid-cols-2 gap-2">
               {AVAILABLE_FIELDS.map((field) => (
                 <label key={field.id} className="flex items-center space-x-2">
@@ -120,11 +110,7 @@ export default function FindAndReplace() {
         </form>
 
         {/* Error message */}
-        {error && (
-          <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-md">
-            {error}
-          </div>
-        )}
+        {error && <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-md">{error}</div>}
 
         {/* Results */}
         {result && (
@@ -136,29 +122,19 @@ export default function FindAndReplace() {
             {/* Preview changes */}
             {preview.length > 0 && (
               <div className="mt-4">
-                <h2 className="text-lg font-semibold mb-3">
-                  Xem trước thay đổi:
-                </h2>
+                <h2 className="text-lg font-semibold mb-3">Xem trước thay đổi:</h2>
                 <div className="space-y-4">
                   {preview.map((item: any) => (
                     <div key={item.id} className="border p-4 rounded-md">
-                      {Object.entries(item.changes).map(
-                        ([field, values]: [string, any]) => (
-                          <div key={field} className="mb-2">
-                            <p className="font-medium">
-                              {
-                                AVAILABLE_FIELDS.find((f) => f.id === field)
-                                  ?.label
-                              }
-                              :
-                            </p>
-                            <div className="text-sm">
-                              <p className="text-red-600">- {values.before}</p>
-                              <p className="text-green-600">+ {values.after}</p>
-                            </div>
+                      {Object.entries(item.changes).map(([field, values]: [string, any]) => (
+                        <div key={field} className="mb-2">
+                          <p className="font-medium">{AVAILABLE_FIELDS.find((f) => f.id === field)?.label}:</p>
+                          <div className="text-sm">
+                            <p className="text-red-600">- {values.before}</p>
+                            <p className="text-green-600">+ {values.after}</p>
                           </div>
-                        )
-                      )}
+                        </div>
+                      ))}
                     </div>
                   ))}
                 </div>

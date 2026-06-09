@@ -1,4 +1,6 @@
 import React from "react";
+export const dynamic = "force-dynamic";
+
 import { Container, Typography, Box } from "@mui/material";
 import ClientMetadata from "@/components/Client/ClientMetadata/ClientMetadata";
 import BreadcrumbsComponent from "@/components/Blogs/Breadcrumbs";
@@ -15,19 +17,15 @@ const PrivacyPolicyPage: React.FC = () => {
       />
       <Container maxWidth="md" sx={{ mt: 5, mb: 5 }}>
         <div className="my-6">
-          <BreadcrumbsComponent
-            breadcrumbs={[{ name: "Trang Chủ", url: "/" }]}
-            currentTitle="Chính Sách Bảo Mật"
-          />
+          <BreadcrumbsComponent breadcrumbs={[{ name: "Trang Chủ", url: "/" }]} currentTitle="Chính Sách Bảo Mật" />
         </div>
         <Typography variant="h4" gutterBottom>
           Chính Sách Bảo Mật
         </Typography>
 
         <Typography variant="body1" paragraph>
-          Chúng tôi cam kết bảo vệ quyền riêng tư và dữ liệu cá nhân của bạn khi
-          sử dụng dịch vụ của chúng tôi. Chính sách này giải thích cách chúng
-          tôi thu thập, sử dụng và bảo vệ thông tin của bạn.
+          Chúng tôi cam kết bảo vệ quyền riêng tư và dữ liệu cá nhân của bạn khi sử dụng dịch vụ của chúng tôi. Chính
+          sách này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ thông tin của bạn.
         </Typography>
 
         <Box sx={{ mt: 3 }}>
@@ -40,9 +38,7 @@ const PrivacyPolicyPage: React.FC = () => {
           <ul>
             <li>Thông tin cá nhân: Họ tên, số điện thoại, email, địa chỉ.</li>
             <li>Thông tin vị trí: Khi bạn sử dụng dịch vụ đặt xe.</li>
-            <li>
-              Thông tin thanh toán: Nếu bạn thực hiện giao dịch qua ứng dụng.
-            </li>
+            <li>Thông tin thanh toán: Nếu bạn thực hiện giao dịch qua ứng dụng.</li>
             <li>Dữ liệu thiết bị: Loại thiết bị, hệ điều hành, địa chỉ IP.</li>
           </ul>
         </Box>
@@ -67,13 +63,11 @@ const PrivacyPolicyPage: React.FC = () => {
             3. Chia Sẻ Thông Tin
           </Typography>
           <Typography variant="body1" paragraph>
-            Chúng tôi cam kết không bán, trao đổi thông tin cá nhân của bạn. Tuy
-            nhiên, chúng tôi có thể chia sẻ dữ liệu trong các trường hợp:
+            Chúng tôi cam kết không bán, trao đổi thông tin cá nhân của bạn. Tuy nhiên, chúng tôi có thể chia sẻ dữ liệu
+            trong các trường hợp:
           </Typography>
           <ul>
-            <li>
-              Với đối tác cung cấp dịch vụ (tài xế, nhà cung cấp thanh toán).
-            </li>
+            <li>Với đối tác cung cấp dịch vụ (tài xế, nhà cung cấp thanh toán).</li>
             <li>Theo yêu cầu của cơ quan pháp luật.</li>
             <li>Trong trường hợp sáp nhập, mua bán doanh nghiệp.</li>
           </ul>
@@ -84,8 +78,8 @@ const PrivacyPolicyPage: React.FC = () => {
             4. Bảo Mật Thông Tin
           </Typography>
           <Typography variant="body1" paragraph>
-            Chúng tôi áp dụng các biện pháp bảo mật nghiêm ngặt để bảo vệ thông
-            tin cá nhân khỏi truy cập trái phép, mất mát hoặc lạm dụng.
+            Chúng tôi áp dụng các biện pháp bảo mật nghiêm ngặt để bảo vệ thông tin cá nhân khỏi truy cập trái phép, mất
+            mát hoặc lạm dụng.
           </Typography>
         </Box>
 
@@ -94,15 +88,14 @@ const PrivacyPolicyPage: React.FC = () => {
             5. Quyền Lợi Người Dùng
           </Typography>
           <Typography variant="body1" paragraph>
-            Bạn có quyền yêu cầu truy cập, chỉnh sửa hoặc xóa thông tin cá nhân
-            của mình. Nếu có bất kỳ thắc mắc nào, hãy liên hệ với chúng tôi.
+            Bạn có quyền yêu cầu truy cập, chỉnh sửa hoặc xóa thông tin cá nhân của mình. Nếu có bất kỳ thắc mắc nào,
+            hãy liên hệ với chúng tôi.
           </Typography>
         </Box>
 
         <Box sx={{ mt: 5 }}>
           <Typography variant="body2" color="text.secondary">
-            Chính sách bảo mật này có hiệu lực từ ngày [ngày/tháng/năm] và có
-            thể được cập nhật theo thời gian.
+            Chính sách bảo mật này có hiệu lực từ ngày [ngày/tháng/năm] và có thể được cập nhật theo thời gian.
           </Typography>
         </Box>
       </Container>

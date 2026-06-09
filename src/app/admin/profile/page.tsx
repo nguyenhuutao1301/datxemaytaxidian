@@ -1,16 +1,8 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import React from "react";
-import {
-  Container,
-  Typography,
-  Box,
-  Avatar,
-  Grid,
-  Paper,
-  IconButton,
-  TextField,
-  Button,
-} from "@mui/material";
+import { Container, Typography, Box, Avatar, Grid, Paper, IconButton, TextField, Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import { useUser } from "@/context/UserContext";
 import { updateUser } from "@/api/user/apiUpdateUser";
@@ -20,10 +12,7 @@ import Loader from "@/components/Loading";
 import ClientMeta from "@/components/Client/ClientMetadata/ClientMetadata";
 import formatVND from "@/helpers/fomatVnd.helpper";
 //import Loader from "@/components/Loader"; // Giả sử bạn có một component Loader
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  props,
-  ref
-) {
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
@@ -62,10 +51,7 @@ const ProfilePage: React.FC = () => {
   }, [user]);
 
   // Handler for closing snackbar
-  const handleCloseSnackbar = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
+  const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === "clickaway") {
       return;
     }
@@ -119,9 +105,7 @@ const ProfilePage: React.FC = () => {
   if (!user) {
     return (
       <Container sx={{ mt: 20, mb: 20 }}>
-        <MuiAlert severity="warning">
-          Bạn cần đăng nhập để truy cập nội dung này.
-        </MuiAlert>
+        <MuiAlert severity="warning">Bạn cần đăng nhập để truy cập nội dung này.</MuiAlert>
       </Container>
     );
   }
@@ -131,17 +115,8 @@ const ProfilePage: React.FC = () => {
       <ClientMeta title="Trang cá nhân | Taxi Grab Liên Tỉnh" isIndex={false} />
       <Container maxWidth="sm" sx={{ mt: 5, mb: 5 }}>
         <Paper elevation={3} sx={{ p: 4 }}>
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            position="relative"
-          >
-            <Avatar
-              src={avatarUrl || "/grab.jpg"}
-              alt={fullName || "User"}
-              sx={{ width: 100, height: 100, mb: 2 }}
-            />
+          <Box display="flex" flexDirection="column" alignItems="center" position="relative">
+            <Avatar src={avatarUrl || "/grab.jpg"} alt={fullName || "User"} sx={{ width: 100, height: 100, mb: 2 }} />
             {!editMode && (
               <IconButton
                 aria-label="edit"
@@ -170,12 +145,8 @@ const ProfilePage: React.FC = () => {
               </>
             ) : (
               <>
-                <Typography variant="h5">
-                  {fullName || "Chưa cập nhật tên"}
-                </Typography>
-                <Typography color="text.secondary">
-                  {email || "Chưa cập nhật email"}
-                </Typography>
+                <Typography variant="h5">{fullName || "Chưa cập nhật tên"}</Typography>
+                <Typography color="text.secondary">{email || "Chưa cập nhật email"}</Typography>
               </>
             )}
           </Box>
@@ -186,25 +157,16 @@ const ProfilePage: React.FC = () => {
                 <Typography variant="subtitle1" fontWeight="bold">
                   Vai Trò:
                 </Typography>
-                <Typography variant="body1">
-                  {user.role === "user" ? "Khách Hàng" : "Quản Trị Viên"}
-                </Typography>
+                <Typography variant="body1">{user.role === "user" ? "Khách Hàng" : "Quản Trị Viên"}</Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="subtitle1" fontWeight="bold">
                   Số điện thoại:
                 </Typography>
                 {editMode ? (
-                  <TextField
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    fullWidth
-                    sx={{ mb: 2 }}
-                  />
+                  <TextField value={phone} onChange={(e) => setPhone(e.target.value)} fullWidth sx={{ mb: 2 }} />
                 ) : (
-                  <Typography variant="body1">
-                    {phone || "Chưa cập nhật số điện thoại"}
-                  </Typography>
+                  <Typography variant="body1">{phone || "Chưa cập nhật số điện thoại"}</Typography>
                 )}
               </Grid>
               <Grid item xs={12}>
@@ -212,25 +174,16 @@ const ProfilePage: React.FC = () => {
                   Địa chỉ:
                 </Typography>
                 {editMode ? (
-                  <TextField
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    fullWidth
-                    sx={{ mb: 2 }}
-                  />
+                  <TextField value={address} onChange={(e) => setAddress(e.target.value)} fullWidth sx={{ mb: 2 }} />
                 ) : (
-                  <Typography variant="body1">
-                    {address || "Chưa cập nhật địa chỉ"}
-                  </Typography>
+                  <Typography variant="body1">{address || "Chưa cập nhật địa chỉ"}</Typography>
                 )}
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="subtitle1" fontWeight="bold">
                   Số Dư :
                 </Typography>
-                <Typography variant="body1">
-                  {`${formatVND(balance)} VNĐ` || "0 VNĐ"}
-                </Typography>
+                <Typography variant="body1">{`${formatVND(balance)} VNĐ` || "0 VNĐ"}</Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="subtitle1" fontWeight="bold">
@@ -246,43 +199,28 @@ const ProfilePage: React.FC = () => {
                     sx={{ mb: 2 }}
                   />
                 ) : (
-                  <Typography variant="body1">
-                    {bio || "Chưa có thông tin giới thiệu"}
-                  </Typography>
+                  <Typography variant="body1">{bio || "Chưa có thông tin giới thiệu"}</Typography>
                 )}
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="subtitle1" fontWeight="bold">
                   Ngày Tạo Tài Khoản:
                 </Typography>
-                <Typography variant="body1">
-                  {user.createdAt || "Chưa có thông tin"}
-                </Typography>
+                <Typography variant="body1">{user.createdAt || "Chưa có thông tin"}</Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="subtitle1" fontWeight="bold">
                   Ngày Update Thay Đổi Gần Nhất:
                 </Typography>
-                <Typography variant="body1">
-                  {user.updatedAt || "Chưa có thông tin"}
-                </Typography>
+                <Typography variant="body1">{user.updatedAt || "Chưa có thông tin"}</Typography>
               </Grid>
             </Grid>
             {editMode && (
               <Box mt={2} display="flex" justifyContent="flex-end" gap={2}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleUpdate}
-                  disabled={loading}
-                >
+                <Button variant="contained" color="primary" onClick={handleUpdate} disabled={loading}>
                   {loading ? "Đang cập nhật..." : "Cập nhật"}
                 </Button>
-                <Button
-                  variant="outlined"
-                  onClick={() => setEditMode(false)}
-                  disabled={loading}
-                >
+                <Button variant="outlined" onClick={() => setEditMode(false)} disabled={loading}>
                   Hủy
                 </Button>
               </Box>
@@ -296,11 +234,7 @@ const ProfilePage: React.FC = () => {
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
-        <Alert
-          onClose={handleCloseSnackbar}
-          severity={snackbar.severity}
-          sx={{ width: "100%" }}
-        >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: "100%" }}>
           {snackbar.message}
         </Alert>
       </Snackbar>
