@@ -16,20 +16,20 @@ const slides: Slide[] = [
   {
     id: 1,
     image: "/slider1.png",
-    title: "Đặt Taxi Nhanh, Giá Rẻ & Chuyên Nghiệp",
-    description: "Dịch vụ taxi hàng đầu với tài xế lành nghề, xe sạch sẽ và dịch vụ tận tâm.",
+    title: "Đặt Taxi Nhanh giá rẻ - Nhanh chóng",
+    description: "Tận hưởng hành trình an toàn và tiện lợi cùng chúng tôi.",
   },
   {
     id: 2,
     image: "/grab-image-5.png",
-    title: "Giao Hàng Nhanh & An Toàn",
-    description: "Giao hàng chuyên nghiệp trong toàn quốc với đội tác vụ đáng tin cậy.",
+    title: "Taxi Giao Hàng Chuyên Nghiệp",
+    description: "Giao Hàng Nhanh - Gọn - An toàn.",
   },
   {
     id: 3,
     image: "/slider2.png",
-    title: "Đa Dạng Loại Xe, Phục Vụ 24/7",
-    description: "Xe 4 chỗ, 7 chỗ, 16 chỗ - Luôn sẵn sàng phục vụ bạn mọi lúc.",
+    title: "Taxi 4 - 7 - 16 chỗ toàn quốc",
+    description: "Đặt Taxi Đón tận nơi, phục vụ 24/7.",
   },
 ];
 
@@ -50,7 +50,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+    <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -58,48 +58,54 @@ const HeroSlider = () => {
             index === current ? "opacity-100 z-20" : "opacity-0 z-10"
           }`}
         >
-          <Image src={slide.image} alt={slide.title} fill className="object-cover" priority={index === 0} />
-          {/* Gradient overlay - professional look */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 flex flex-col justify-center px-8 md:px-16">
-            <div className="max-w-2xl">
-              <h2 className="text-white text-3xl md:text-5xl font-bold mb-4 leading-tight">{slide.title}</h2>
-              <p className="text-white/90 text-base md:text-lg font-light mb-8">{slide.description}</p>
-              <a
-                href={`tel:${siteConfig.contactInfo.phone}`}
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold text-sm md:text-base transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-              >
-                <span>📞 Gọi ngay:</span>
-                <span className="font-bold">{siteConfig.contactInfo.phone}</span>
-              </a>
-            </div>
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            className="object-cover"
+            priority={index === 0}
+          />
+          <div className="absolute inset-0 bg-black/50 flex flex-col justify-center px-8 md:px-16">
+            <h2 className="text-white text-3xl md:text-5xl font-bold drop-shadow mb-3">
+              {slide.title}
+            </h2>
+            <p className="text-white text-lg md:text-xl drop-shadow">
+              {slide.description}
+            </p>
+            <a
+              href={`tel:${siteConfig.contactInfo.phone}`}
+              className="mt-6 w-max inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold text-sm md:text-base transition"
+            >
+              Gọi ngay: {siteConfig.contactInfo.phone}
+            </a>
           </div>
         </div>
       ))}
 
-      {/* Navigation buttons */}
+      {/* Nút điều hướng */}
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-6 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full z-30 transition duration-300 backdrop-blur-sm"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full z-30"
         aria-label="Prev slide"
       >
         <ChevronLeftIcon className="w-6 h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-6 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full z-30 transition duration-300 backdrop-blur-sm"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full z-30"
         aria-label="Next slide"
       >
         <ChevronRightIcon className="w-6 h-6" />
       </button>
 
       {/* Dot indicators */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3 z-30">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-30">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`transition-all duration-300 rounded-full ${
-              index === current ? "bg-white w-8 h-3" : "bg-white/50 hover:bg-white/70 w-3 h-3"
+            className={`w-3 h-3 rounded-full ${
+              index === current ? "bg-white" : "bg-white/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

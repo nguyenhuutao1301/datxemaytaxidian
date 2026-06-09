@@ -1,6 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
-
 import { useState, useEffect } from "react";
 import { readSettingApi } from "@/api/settings/readSetting";
 import createSettingApi from "@/api/settings/createSetting";

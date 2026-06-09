@@ -9,10 +9,10 @@ const siteConfig = {
   name: "TAXI GIÁ RẺ | Đặt 4 - 7 Chỗ Nhanh Nhất",
   title: "TAXI GIÁ RẺ | Đặt 4 - 7 Chỗ Nhanh Nhất",
   description: "Tổng đài taxi liên tỉnh , xe đời mới tài lâu năm đón nhanh chỉ 5 phút gọi xe đặt xe nhiều ưu đãi",
-  domain: "https://datxemaytaxidian.com",
+  domain: "https://hotrodatxesieure.com",
   metaDescription: "Tổng đài taxi liên tỉnh , xe đời mới tài lâu năm đón nhanh chỉ 5 phút gọi xe đặt xe nhiều ưu đãi",
   keywords: "taxi tphcm,taxi giá rẻ,taxi gần đây,grab,bee,xanh sm,đặt xe,4 chỗ,7 chỗ",
-  logo: "https://datxemaytaxidian.com/logo.png",
+  logo: "https://hotrodatxesieure.com/logo.png",
   contactInfo: {
     phone: "0933551965",
     email: "tranhuuphong08051993@gmail.com",

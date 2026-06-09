@@ -1,7 +1,11 @@
 import React from "react";
-export const dynamic = "force-dynamic";
-
-import { Container, Typography, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ClientMetadata from "@/components/Client/ClientMetadata/ClientMetadata";
 import BreadcrumbsComponent from "@/components/Blogs/Breadcrumbs";
@@ -20,7 +24,8 @@ const FAQPage: React.FC = () => {
     },
     {
       question: "Tôi có thể thanh toán bằng những phương thức nào?",
-      answer: "Chúng tôi hỗ trợ thanh toán qua tiền mặt, thẻ ngân hàng, ví điện tử như Momo, ZaloPay, và VNPay.",
+      answer:
+        "Chúng tôi hỗ trợ thanh toán qua tiền mặt, thẻ ngân hàng, ví điện tử như Momo, ZaloPay, và VNPay.",
     },
     {
       question: "Tôi có thể đặt xe trước không?",
@@ -29,7 +34,8 @@ const FAQPage: React.FC = () => {
     },
     {
       question: "Dịch vụ có hỗ trợ giao hàng không?",
-      answer: "Có, bạn có thể sử dụng dịch vụ giao hàng bằng xe máy hoặc ô tô tùy vào nhu cầu của mình.",
+      answer:
+        "Có, bạn có thể sử dụng dịch vụ giao hàng bằng xe máy hoặc ô tô tùy vào nhu cầu của mình.",
     },
     {
       question: "Tôi có thể hủy chuyến xe không?",
@@ -53,14 +59,17 @@ const FAQPage: React.FC = () => {
       />
       <Container maxWidth="md" sx={{ mt: 5, mb: 5 }}>
         <div className="my-6">
-          <BreadcrumbsComponent breadcrumbs={[{ name: "Trang Chủ", url: "/" }]} currentTitle="FAQ" />
+          <BreadcrumbsComponent
+            breadcrumbs={[{ name: "Trang Chủ", url: "/" }]}
+            currentTitle="FAQ"
+          />
         </div>
         <Typography variant="h4" gutterBottom>
           Câu Hỏi Thường Gặp (FAQ)
         </Typography>
         <Typography variant="body1" paragraph>
-          Dưới đây là những câu hỏi phổ biến về dịch vụ của chúng tôi. Nếu bạn có thắc mắc khác, vui lòng liên hệ với
-          chúng tôi.
+          Dưới đây là những câu hỏi phổ biến về dịch vụ của chúng tôi. Nếu bạn
+          có thắc mắc khác, vui lòng liên hệ với chúng tôi.
         </Typography>
 
         {faqData.map((faq, index) => (

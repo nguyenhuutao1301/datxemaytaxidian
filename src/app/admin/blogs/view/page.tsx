@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import React, { useEffect, useRef, useState } from "react";
 import { getAllPosts } from "@/api/bai-viet/read.api";
@@ -54,7 +53,7 @@ export default function ViewAllPost() {
 
     if (
       !window.confirm(
-        `Sau khi nhấn xác nhận sẽ xóa ${selectedPosts.length} bài viết đã chọn ! bạn không thể khôi phục chúng ! bạn chắc chứ !!!!!!!!!!!!!!`,
+        `Sau khi nhấn xác nhận sẽ xóa ${selectedPosts.length} bài viết đã chọn ! bạn không thể khôi phục chúng ! bạn chắc chứ !!!!!!!!!!!!!!`
       )
     )
       return;
@@ -241,7 +240,10 @@ export default function ViewAllPost() {
                         />
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-800 max-w-xs">
-                        <Link href={`/${post.slug}`} className="text-blue-600 hover:underline text-xs truncate block">
+                        <Link
+                          href={`/bai-viet/${post.slug}`}
+                          className="text-blue-600 hover:underline text-xs truncate block"
+                        >
                           {post.title}
                         </Link>
                       </td>

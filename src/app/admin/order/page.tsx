@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
 import { getAllOrder } from "@/api/order/getOrder";
@@ -9,7 +8,14 @@ import { deleteOrderById } from "@/api/order/deleteOrder";
 import ClientMeta from "@/components/Client/ClientMetadata/ClientMetadata";
 import type { Order } from "@/types/orther";
 
-const serviceTypes = ["Grap Bike", "Grap Express", "Grap 4 Chỗ", "Grap 7 Chỗ", "Grap 16 Chỗ", "Grap 29 Chỗ"];
+const serviceTypes = [
+  "Grap Bike",
+  "Grap Express",
+  "Grap 4 Chỗ",
+  "Grap 7 Chỗ",
+  "Grap 16 Chỗ",
+  "Grap 29 Chỗ",
+];
 
 const statuses = ["đang xử lí", "đã đặt", "hoàn thành", "đã hủy"];
 
@@ -27,7 +33,11 @@ export default function AdminOrdersPage() {
     message: "",
     type: "success",
   });
-  const showModal = (type: "success" | "error", title: string, message: string) => {
+  const showModal = (
+    type: "success" | "error",
+    title: string,
+    message: string
+  ) => {
     setModal({
       show: true,
       title,
@@ -55,7 +65,11 @@ export default function AdminOrdersPage() {
     try {
       const res = await deleteOrderById(id);
       if (res?.success) {
-        showModal("success", "Cập nhật thành công", "Thông tin đơn hàng đã được cập nhật.");
+        showModal(
+          "success",
+          "Cập nhật thành công",
+          "Thông tin đơn hàng đã được cập nhật."
+        );
         setOrders(orders.filter((order) => order._id !== id));
       } else {
         showModal("error", "Lỗi", "Cập nhật thất bại.");
@@ -71,7 +85,11 @@ export default function AdminOrdersPage() {
     try {
       const res = await updateOrderChange(id, order);
       if (res?.success) {
-        showModal("success", "Cập nhật thành công", "Thông tin đơn hàng đã được cập nhật.");
+        showModal(
+          "success",
+          "Cập nhật thành công",
+          "Thông tin đơn hàng đã được cập nhật."
+        );
       } else {
         showModal("error", "Lỗi", "Cập nhật thất bại.");
       }
@@ -115,7 +133,11 @@ export default function AdminOrdersPage() {
                         value={order.serviceType}
                         onChange={(e) =>
                           setOrders((prev) =>
-                            prev.map((o) => (o._id === order._id ? { ...o, serviceType: e.target.value } : o)),
+                            prev.map((o) =>
+                              o._id === order._id
+                                ? { ...o, serviceType: e.target.value }
+                                : o
+                            )
                           )
                         }
                       >
@@ -133,7 +155,11 @@ export default function AdminOrdersPage() {
                         value={order.price}
                         onChange={(e) =>
                           setOrders((prev) =>
-                            prev.map((o) => (o._id === order._id ? { ...o, price: parseInt(e.target.value) } : o)),
+                            prev.map((o) =>
+                              o._id === order._id
+                                ? { ...o, price: parseInt(e.target.value) }
+                                : o
+                            )
                           )
                         }
                       />
@@ -144,7 +170,11 @@ export default function AdminOrdersPage() {
                         value={order.status}
                         onChange={(e) =>
                           setOrders((prev) =>
-                            prev.map((o) => (o._id === order._id ? { ...o, status: e.target.value } : o)),
+                            prev.map((o) =>
+                              o._id === order._id
+                                ? { ...o, status: e.target.value }
+                                : o
+                            )
                           )
                         }
                       >
@@ -155,8 +185,12 @@ export default function AdminOrdersPage() {
                         ))}
                       </select>
                     </td>
-                    <td className="p-2 text-sm text-gray-600">{order?.userId?.username ?? "N/A"}</td>
-                    <td className="p-2 text-sm text-gray-500">{new Date(order.createAt).toLocaleString()}</td>
+                    <td className="p-2 text-sm text-gray-600">
+                      {order?.userId?.username ?? "N/A"}
+                    </td>
+                    <td className="p-2 text-sm text-gray-500">
+                      {new Date(order.createAt).toLocaleString()}
+                    </td>
                     <td className="p-2 space-x-2 flex gap-1">
                       <button
                         onClick={() => updateOrder(order._id, order)}

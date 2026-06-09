@@ -6,9 +6,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
     remotePatterns: [
       {
@@ -31,15 +28,6 @@ const nextConfig = {
         permanent: true,
       },
     ];
-  },
-  // Optimize build performance
-  experimental: {
-    optimizePackageImports: ["@mui/material", "@mui/icons-material"],
-  },
-  // Reduce static generation to only critical pages
-  onDemandEntries: {
-    maxInactiveAge: 60 * 1000,
-    pagesBufferLength: 5,
   },
 };
 
